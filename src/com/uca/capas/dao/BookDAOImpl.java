@@ -7,9 +7,11 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.springframework.dao.DataAccessException;
+import org.springframework.stereotype.Repository;
 
 import com.uca.capas.domain.Book;
 
+@Repository
 public class BookDAOImpl implements BookDAO{
 
 	@PersistenceContext(name="capas")
@@ -27,9 +29,54 @@ public class BookDAOImpl implements BookDAO{
 	}
 	
 	@Override
-	public Book findOne(Integer code) throws DataAccessException {
-		// TODO Auto-generated method stub
-		Book student = entityManager.find(Book.class, code);
-		return student;
+	public List<Book> findDetailed(String selector, String input) throws DataAccessException {
+		
+		StringBuffer sb = new StringBuffer();
+		sb.append("SELECT * FROM libro WHERE ");
+		sb.append(selector);
+		sb.append(" = :input");
+		Query query = entityManager.createNativeQuery(sb.toString(), Book.class);
+		query.setParameter("input", input);
+		List<Book> books = query.getResultList();
+		return books;
 	}
+
+	@Override
+	public List<Book> findDetailedCount(String selector, Integer input) throws DataAccessException {
+
+		StringBuffer sb = new StringBuffer();
+		sb.append("SELECT * FROM libro WHERE ");
+		sb.append(selector);
+		sb.append(" = :input");
+		Query query = entityManager.createNativeQuery(sb.toString(), Book.class);
+		query.setParameter("input", input);
+		List<Book>  books = query.getResultList();
+		return books;
+
+	}
+	
+	@Override
+	public Integer countDetailed(String selector, String input) throws DataAccessException {
+		StringBuffer sb = new StringBuffer();
+		sb.append("SELECT * FROM libro WHERE ");
+		sb.append(selector);
+		sb.append(" = :input");
+		Query query = entityManager.createNativeQuery(sb.toString(), Book.class);
+		query.setParameter("input", input);
+		Integer  numero = query.getResultList().size();
+		return numero;
+	}
+	
+	@Override
+	public Integer countDetailedNumber(String selector, Integer input) throws DataAccessException {
+		StringBuffer sb = new StringBuffer();
+		sb.append("SELECT * FROM libro WHERE ");
+		sb.append(selector);
+		sb.append(" = :input");
+		Query query = entityManager.createNativeQuery(sb.toString(), Book.class);
+		query.setParameter("input", input);
+		Integer  numero = query.getResultList().size();
+		return numero;
+	}
+	
 }

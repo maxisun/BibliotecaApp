@@ -38,13 +38,13 @@ public class Book {
 	@NotNull(message="please insert book quantity")
 	@PositiveOrZero(message = "quantity must be a positive number or zero")
 	@Digits(message = "insert a valid book quantity", integer = 300, fraction = 0)
-	private int quantity;
+	private Integer quantity;
 
 	public Book() {
 
 	}
 	
-	public Book(String isbn, String title, String author, int quantity) {
+	public Book(String isbn, String title, String author, Integer quantity) {
 		this.isbn = isbn;
 		this.title = title;
 		this.author = author;
@@ -75,11 +75,11 @@ public class Book {
 		this.author = author;
 	}
 
-	public int getQuantity() {
+	public Integer getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(int quantity) {
+	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
 	

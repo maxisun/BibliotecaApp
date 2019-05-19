@@ -11,7 +11,7 @@
 </head>
 <body>
 	
-	<form action="${pageContext.request.contextPath}/Bookfind" method="post"> 
+	<form action="${pageContext.request.contextPath}/bookfind" method="post"> 
 		<label>Buscar: </label>
 		<select name="selector">
 			<option value="isbn">ISBN</option>
@@ -19,15 +19,11 @@
 	    	<option value="autor">Autor</option>
 	    	<option value="quantity">Cantidad</option>
 		</select>
-		<input type= "text" name="search">
+		<input type="text" name="search">
 		<input type="submit" value="Buscar">
+		<input type="button" value="Ver Todos">
 	</form>
 	<br>
-	
-	<form action="${pageContext.request.contextPath}/Bookfind" method="post"> 
-		<input type="submit" value="Ver Todos">
-	</form>
-	
 	
 </body>
 </html>
