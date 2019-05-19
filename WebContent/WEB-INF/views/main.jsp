@@ -12,9 +12,22 @@
 <body>
 	
 	<form action="${pageContext.request.contextPath}/Bookfind" method="post"> 
-		<label>Buscar: </label><input type="text" name="name"><br>
-		<input type="submit" value="Delete">
+		<label>Buscar: </label>
+		<select name="selector">
+			<option value="isbn">ISBN</option>
+	    	<option value="titulo">Titulo</option>
+	    	<option value="autor">Autor</option>
+	    	<option value="quantity">Cantidad</option>
+		</select>
+		<input type= "text" name="search">
+		<input type="submit" value="Buscar">
 	</form>
+	<br>
+	
+	<form action="${pageContext.request.contextPath}/Bookfind" method="post"> 
+		<input type="submit" value="Ver Todos">
+	</form>
+	
 	
 </body>
 </html>
