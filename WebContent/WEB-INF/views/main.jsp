@@ -21,9 +21,12 @@
 		</select>
 		<input type="text" name="search">
 		<input type="submit" value="Buscar">
-		<input type="button" value="Ver Todos">
 	</form>
 	<br>
+	
+	<form action="${pageContext.request.contextPath}/bookfindAll" method="post"> 
+		<input type="submit" value="Ver Todos">
+	</form>
 	
 </body>
 </html>

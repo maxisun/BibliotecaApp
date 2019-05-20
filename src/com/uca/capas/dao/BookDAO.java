@@ -1,5 +1,6 @@
 package com.uca.capas.dao;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import org.springframework.dao.DataAccessException;
@@ -17,4 +18,8 @@ public interface BookDAO {
 	public List<Book> findDetailedCount(String selector, Integer input) throws DataAccessException;
 	
 	public Integer countDetailedNumber(String selector, Integer input) throws DataAccessException;
+	
+	public BigInteger countBooks() throws DataAccessException;
+	
+	public BigInteger countAuthors() throws DataAccessException;
 }

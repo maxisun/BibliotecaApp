@@ -1,5 +1,6 @@
 package com.uca.capas.service;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class BookServiceImpl implements BookService{
 	@Override
 	public List<Book> findAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return bookDao.findAll();
 	}
 
 	@Override
@@ -44,6 +45,17 @@ public class BookServiceImpl implements BookService{
 			return bookDao.countDetailedNumber(selector, a);
 		}
 		return bookDao.countDetailed(selector, input);
+	}
+
+	@Override
+	public BigInteger countBooks() {
+		return bookDao.countBooks();
+	}
+
+	@Override
+	public BigInteger countAuthors() {
+		// TODO Auto-generated method stub
+		return bookDao.countAuthors();
 	}
 
 }
