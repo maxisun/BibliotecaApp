@@ -29,7 +29,6 @@ public class BookDAOImpl implements BookDAO{
 	
 	@Override
 	public List<Book> findDetailed(String selector, String input) throws DataAccessException {
-		
 		StringBuffer sb = new StringBuffer();
 		sb.append("SELECT * FROM public.libro WHERE ");
 		sb.append(selector);
@@ -42,7 +41,6 @@ public class BookDAOImpl implements BookDAO{
 
 	@Override
 	public List<Book> findDetailedCount(String selector, Integer input) throws DataAccessException {
-
 		StringBuffer sb = new StringBuffer();
 		sb.append("SELECT * FROM public.libro WHERE ");
 		sb.append(selector);
@@ -55,26 +53,26 @@ public class BookDAOImpl implements BookDAO{
 	}
 	
 	@Override
-	public Integer countDetailed(String selector, String input) throws DataAccessException {
+	public BigInteger countDetailed(String selector, String input) throws DataAccessException {
 		StringBuffer sb = new StringBuffer();
-		sb.append("SELECT * FROM public.libro WHERE ");
+		sb.append("SELECT count(*) FROM public.libro WHERE ");
 		sb.append(selector);
 		sb.append(" = :input");
-		Query query = entityManager.createNativeQuery(sb.toString(), Book.class);
+		Query query = entityManager.createNativeQuery(sb.toString());
 		query.setParameter("input", input);
-		Integer  numero = query.getResultList().size();
+		BigInteger  numero = (BigInteger) query.getSingleResult();
 		return numero;
 	}
 	
 	@Override
-	public Integer countDetailedNumber(String selector, Integer input) throws DataAccessException {
+	public BigInteger countDetailedNumber(String selector, Integer input) throws DataAccessException {
 		StringBuffer sb = new StringBuffer();
-		sb.append("SELECT * FROM public.libro WHERE ");
+		sb.append("SELECT count(*) FROM public.libro WHERE ");
 		sb.append(selector);
 		sb.append(" = :input");
-		Query query = entityManager.createNativeQuery(sb.toString(), Book.class);
+		Query query = entityManager.createNativeQuery(sb.toString());
 		query.setParameter("input", input);
-		Integer  numero = query.getResultList().size();
+		BigInteger  numero = (BigInteger) query.getSingleResult();
 		return numero;
 	}
 

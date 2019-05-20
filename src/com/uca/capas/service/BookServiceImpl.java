@@ -33,12 +33,12 @@ public class BookServiceImpl implements BookService{
 
 	@Override
 	public String capital(String capital) {
-		String ready =capital.substring(0, 1).toUpperCase() + capital.substring(1);
+		String ready = capital.substring(0, 1).toUpperCase() + capital.substring(1);
 		return ready;
 	}
 
 	@Override
-	public Integer countDetailed(String selector, String input) {
+	public BigInteger countDetailed(String selector, String input) {
 		// TODO Auto-generated method stub
 		if(selector.equals("quantity")) {
 			int a = Integer.parseInt(input);

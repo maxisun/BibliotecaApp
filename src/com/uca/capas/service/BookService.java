@@ -13,7 +13,7 @@ public interface BookService {
 	
 	public String capital(String capital);
 	
-	public Integer countDetailed(String selector, String input);
+	public BigInteger countDetailed(String selector, String input);
 	
 	public BigInteger countBooks();
 	

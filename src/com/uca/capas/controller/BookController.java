@@ -12,7 +12,6 @@ import com.uca.capas.domain.Book;
 import com.uca.capas.service.BookService;
 
 
-
 @Controller
 public class BookController {
 	
