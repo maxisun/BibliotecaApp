@@ -23,9 +23,14 @@ public class BookServiceImpl implements BookService{
 
 	@Override
 	public List<Book> findDetailed(String selector, String input) {
+		String reg = "^[0-9]+$";
 		if(selector.equals("quantity")) {
-			int a = Integer.parseInt(input);
-			return bookDao.findDetailedCount(selector, a);
+			if(input.matches(reg)) {
+				Integer a = Integer.parseInt(input);
+				return bookDao.findDetailedCount(selector, a);
+			} else {
+				return null;
+			}
 		}
 		// TODO Auto-generated method stub
 		return bookDao.findDetailed(selector, input);
@@ -40,9 +45,15 @@ public class BookServiceImpl implements BookService{
 	@Override
 	public BigInteger countDetailed(String selector, String input) {
 		// TODO Auto-generated method stub
+		String reg = "^[0-9]+$";
+		BigInteger test = BigInteger.valueOf(0);
 		if(selector.equals("quantity")) {
-			int a = Integer.parseInt(input);
-			return bookDao.countDetailedNumber(selector, a);
+			if(input.matches(reg)) {
+				Integer a = Integer.parseInt(input);
+				return bookDao.countDetailedNumber(selector, a);
+			} else {
+				return test;
+			}
 		}
 		return bookDao.countDetailed(selector, input);
 	}
